@@ -123,11 +123,19 @@ int  MATCH_SPACE (int measured_ticks,  int desired_us)
 // As soon as first MARK arrives:
 //   Gap width is recorded; Ready is cleared; New logging starts
 //
+
+// fixes (
+#define HIGH 1
+#define digitalRead(x) x
+
+//)
+
 #ifdef IR_TIMER_USE_ESP32
 void IRTimer()
 #else
 ISR (TIMER_INTR_NAME)
 #endif
+
 {
 	TIMER_RESET;
 

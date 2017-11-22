@@ -1,6 +1,11 @@
 #include "IRremote.h"
 #include "IRremoteInt.h"
 
+
+// fixes(
+#include "boarddefs.h"
+//)
+
 #ifdef IR_TIMER_USE_ESP32
 hw_timer_t *timer;
 void IRTimer(); // defined in IRremote.cpp
@@ -211,12 +216,12 @@ int  IRrecv::compare (unsigned int oldval,  unsigned int newval)
 // Hopefully this code is unique for each button.
 // This isn't a "real" decoding, just an arbitrary value.
 //
-#define FNV_PRIME_32 16777619
-#define FNV_BASIS_32 2166136261
+#define FNV_PRIME_32 16777619UL
+#define FNV_BASIS_32 2166136261UL
 
-long  IRrecv::decodeHash (decode_results *results)
+unsigned long  IRrecv::decodeHash (decode_results *results)
 {
-	long  hash = FNV_BASIS_32;
+  unsigned long  hash = FNV_BASIS_32;
 
 	// Require at least 6 samples to prevent triggering on noise
 	if (results->rawlen < 6)  return false ;

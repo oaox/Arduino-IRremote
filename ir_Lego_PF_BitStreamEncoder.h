@@ -60,7 +60,7 @@ class LegoPfBitStreamEncoder {
     return length;
   }
 
-  boolean next() {
+  bool next() {
     messageBitIdx++;
     if (messageBitIdx >= MESSAGE_BITS) {
       repeatCount++;

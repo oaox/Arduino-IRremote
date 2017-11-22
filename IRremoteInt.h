@@ -16,17 +16,7 @@
 
 #ifndef IRremoteint_h
 #define IRremoteint_h
-
-//------------------------------------------------------------------------------
-// Include the right Arduino header
-//
-#if defined(ARDUINO) && (ARDUINO >= 100)
-#	include <Arduino.h>
-#else
-#	if !defined(IRPRONTO)
-#		include <WProgram.h>
-#	endif
-#endif
+#include <stdint.h>
 
 //------------------------------------------------------------------------------
 // This handles definition and access to global variables
